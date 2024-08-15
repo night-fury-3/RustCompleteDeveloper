@@ -21,11 +21,15 @@ impl Deck {
         Deck { cards }
     }
 
-    fn shuffle(&self) {}
+    fn shuffle(&mut self) {
+        let mut rng = thread_rng();
+        self.cards.shuffle(&mut rng);
+    }
 }
 
 fn main() {
-    let deck = Deck::new();
+    let mut deck = Deck::new();
+    deck.shuffle();
 
     println!("Heres your deck: {:#?}", deck);
 }
